@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			input{margin: 10px;}
+		</style>
+		<script src="ajax.js"></script>
+		<script src="函数Cookie.js"></script>
+	</head>
+	<body>
+		<form>
+			用户名:<input type="text" /><br />
+			密码:<input type="password" /><br />
+			<input type="submit" value="登录"/>
+		</form>
+	</body>
+	<script type="text/javascript">
+		var inp=document.getElementsByTagName("input");
+		var _inp="";
+		inp[2].onclick=function()
+		{
+			
+			var dat=new Date();
+			var sj="上次登录时间";
+			setCookie(sj,dat,10);
+			
+			ajax("denglu.json",fname);
+			//alert(_inp);
+		}
+		function fname(str)
+		{
+			var _inp1=inp[0].value;
+			var _inp2=inp[1].value;
+			var _inp=_inp1+_inp2;
+			//alert(_inp);
+			var arr=JSON.parse(str).list;
+			for(var i=0;i<arr.length;i++)
+			{
+				//alert(arr[i]);
+				if(arr[i]==_inp)
+				{
+					alert("登录成功");
+					break;
+					
+				}
+				
+			}
+			if(i==arr.length)
+				{
+					alert("用户名或者密码不正确");
+					
+				}
+		}
+		
+		
+	</script>
+</html>

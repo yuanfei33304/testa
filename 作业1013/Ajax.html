@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+		// 1.声明Ajax对象
+			var xhr;
+			if(window.XMLHttpRequest)
+			{
+				xhr=new XMLHttpRequest();
+			}else
+			{
+				xhr=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			//2.连接服务器
+			xhr.open("get","123.txt",true);
+			//3.发送请求
+			xhr.send();
+			//4.建立事件
+			xhr.onreadystatechange=function()
+			{
+				if(xhr.readyState==4)
+				{
+					if(xhr.status==200)
+					{
+						alert(xhr.responseText);
+					}else
+					{
+						alert("文件未找到");
+					}
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
